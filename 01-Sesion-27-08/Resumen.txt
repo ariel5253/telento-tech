@@ -1,0 +1,20 @@
+26-08 hasta el 20 de sep
+Martes 20-21
+Jueves 18-20
+Viernes 20-21
+Sábado 10-12
+
+Express => Backend
+Controller
+Service
+Entity
+
+API => Postman / Swagger / Thunder Client?
+verbos http: POst - Get - Delete - Put
+Status: 
+	200: ok
+	300: Redireccionamiento 
+	400: Error acceso
+	500: Error servidor
+	
+	
