@@ -1,0 +1,55 @@
+@startuml
+
+start
+
+:Login Usuario;
+
+if (Es Bibliotecario?) then (sí)
+    :Acceder a opciones de administración;
+    
+    if (Ingresar al rol bibliotecólogo o Administrador?) then (si)
+        if (Qué acción desea realizar?) then
+            -> Agregar Libro;
+            :Ingresar detalles del libro;
+            :Guardar libro en la base de datos;
+            -> Agregar Autor;
+            :Ingresar detalles del autor;
+            :Guardar autor en la base de datos;
+            -> Asignar Autor a Libro;
+            :Seleccionar libro;
+            :Seleccionar autor;
+            :Guardar asignación en la base de datos;
+            -> Actualizar Ejemplares;
+            :Seleccionar libro;
+            :Ingresar detalles de ejemplares;
+            :Actualizar ejemplares en la base de datos;
+        endif
+    else(no)
+        if (Qué acción desea realizar?) then
+            -> Registra usuarios;
+            :Ingresar datos personales;
+            :Asignar rol (Biblotecólogo | Administrador);
+            :Guardar usuario en la base de datos;
+        endif
+    endif
+    
+
+
+else (no)
+    :Acceder a opciones de usuario;
+    
+    if (Qué acción desea realizar?) then
+        -> Registrarse;
+        :Ingresar datos personales;
+        -> Buscar Libro;
+        :Ingresar criterios de búsqueda;
+        :Mostrar resultados de búsqueda;
+        -> Ver Ejemplares Disponibles;
+        :Seleccionar libro;
+        :Mostrar ejemplares disponibles;
+    endif
+endif
+
+stop
+
+@enduml

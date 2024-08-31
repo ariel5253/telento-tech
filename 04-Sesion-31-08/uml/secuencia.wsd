@@ -1,0 +1,41 @@
+@startuml
+
+actor Usuario
+participant "Sistema" as S
+participant "Base de Datos" as DB
+
+Usuario -> S: Login Usuario
+alt Es Bibliotecario?
+    S -> Usuario: Acceder a opciones de administración
+    alt Ingresar al rol bibliotecólogo o Administrador?
+        Usuario -> S: Seleccionar rol
+        S -> Usuario: Mostrar opciones disponibles
+        Usuario -> S: Elegir "Agregar Libro"
+        S -> Usuario: Solicitar detalles del libro
+        Usuario -> S: Proporcionar detalles del libro
+        S -> DB: Guardar libro en la base de datos
+        DB --> S: Confirmación de guardado
+        S -> Usuario: Confirmación de libro agregado
+    else
+        Usuario -> S: Registrar usuarios
+        S -> Usuario: Solicitar datos personales
+        Usuario -> S: Proporcionar datos personales
+        S -> DB: Guardar usuario en la base de datos
+        DB --> S: Confirmación de guardado
+        S -> Usuario: Confirmación de usuario registrado
+    end
+else
+    S -> Usuario: Acceder a opciones de usuario
+    Usuario -> S: Elegir "Buscar Libro"
+    S -> Usuario: Solicitar criterios de búsqueda
+    Usuario -> S: Proporcionar criterios de búsqueda
+    S -> DB: Consultar libros con criterios
+    DB --> S: Resultados de búsqueda
+    S -> Usuario: Mostrar resultados de búsqueda
+    Usuario -> S: Seleccionar libro para ver ejemplares
+    S -> DB: Consultar ejemplares disponibles
+    DB --> S: Ejemplares disponibles
+    S -> Usuario: Mostrar ejemplares disponibles
+end
+
+@enduml

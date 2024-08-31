@@ -1,0 +1,22 @@
+@startuml
+!define RECTANGLE rectangle
+
+left to right direction
+
+actor Bibliotecario
+actor Usuario
+
+rectangle Sistema {
+    usecase "Administrar Libros" as UC1
+    usecase "Administrar Autores" as UC2
+    usecase "Buscar Libro" as UC3
+    usecase "Ver Ejemplares Disponibles" as UC4
+}
+
+Bibliotecario --> UC1
+Bibliotecario --> UC2
+Bibliotecario --> UC3
+Usuario --> UC3
+Usuario --> UC4
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+
+class Ejemplar {
+  -id: Integer
+  -localizacion: String
+  -codigo: String
+  -cantidad: Integer
+  -libroId: Integer
+}
+
+class Autor {
+  -id: Integer
+  -codigo: String
+  -nombre: String
+}
+
+class Libro {
+  -id: Integer
+  -codigo: String
+  -titulo: String
+  -isbn: String
+  -numeroPagina: Integer
+  -editorial: String
+}
+
+class AutorLibro {
+  -id: Integer
+  -autorId: Integer
+  -libroId: Integer
+}
+
+Ejemplar o-- Libro : "0..*"
+AutorLibro *-- Autor : "1"
+AutorLibro *-- Libro : "1"
+
+@enduml
