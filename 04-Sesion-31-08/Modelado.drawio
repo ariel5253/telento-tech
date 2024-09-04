@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
   <diagram name="Página-1" id="96eORJoEvauKhAOSoQYb">
-    <mxGraphModel dx="1050" dy="717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1185" dy="478" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -31,7 +31,7 @@
             <Array as="points">
               <mxPoint x="95" y="1050" />
               <mxPoint x="80" y="1050" />
-              <mxPoint x="80" y="2170" />
+              <mxPoint x="80" y="5315" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -533,36 +533,38 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-5" value="UI/UX&lt;div&gt;NO debe llevar lógica del negicio&lt;/div&gt;&lt;div&gt;* Seguridad&lt;/div&gt;&lt;div&gt;* Cada cambio sería crítico&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="400" y="2100" width="200" height="110" as="geometry" />
+          <mxGeometry x="426" y="5260" width="200" height="110" as="geometry" />
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="tsc_VWnXnUWQUBISHOld-6" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="850" y="2180.00009765625" as="targetPoint" />
+            <mxPoint x="876" y="5340.00009765625" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-6" value="web" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="670" y="2150.00009765625" width="120" height="60" as="geometry" />
+          <mxGeometry x="696" y="5310.00009765625" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="tsc_VWnXnUWQUBISHOld-10" target="tsc_VWnXnUWQUBISHOld-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-10" value="Móvil" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="670" y="2220.00009765625" width="120" height="60" as="geometry" />
+          <mxGeometry x="696" y="5380.00009765625" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="tsc_VWnXnUWQUBISHOld-11" target="tsc_VWnXnUWQUBISHOld-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-11" value="Escritorio" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="670" y="2080.00009765625" width="120" height="60" as="geometry" />
+          <mxGeometry x="696" y="5240.00009765625" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-14" value="Híbrida&lt;div&gt;ionic/flutter&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="840" y="2150.00009765625" width="120" height="60" as="geometry" />
+          <mxGeometry x="866" y="5310.00009765625" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="tsc_VWnXnUWQUBISHOld-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="tsc_VWnXnUWQUBISHOld-19" target="tsc_VWnXnUWQUBISHOld-21" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="tsc_VWnXnUWQUBISHOld-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="tsc_VWnXnUWQUBISHOld-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="696" y="5590" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-19" value="Herramientas" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="440" y="2400" width="120" height="60" as="geometry" />
+          <mxGeometry x="466" y="5560" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="tsc_VWnXnUWQUBISHOld-21" value="XD Adobe&lt;div&gt;&lt;font color=&quot;#ff0d3d&quot;&gt;Figma&lt;/font&gt;&lt;/div&gt;&lt;div&gt;Type Form&lt;/div&gt;&lt;div&gt;Type Scale&lt;/div&gt;&lt;div&gt;balsamiq&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ff052f&quot;&gt;Canva&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="670" y="2385" width="80" height="90" as="geometry" />
