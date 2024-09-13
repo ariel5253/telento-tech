@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>full_day_manual_part_1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="manual-completo-creaci%C3%B3n-de-api-rest-en-expressjs-con-mysql-y-sequelize">Manual Completo: Creación de API REST en Express.js con MySQL y Sequelize</h1>
+<p>Este manual cubre todo el proceso realizado durante la jornada, desde la creación del proyecto Express hasta la implementación de rutas, controladores y migraciones en MySQL utilizando Sequelize.</p>
+<h2 id="1-crear-el-directorio-del-proyecto">1. Crear el directorio del proyecto</h2>
+<pre class="hljs"><code><div>mkdir library
+<span class="hljs-built_in">cd</span> library
+</div></code></pre>
+<h2 id="2-inicializar-el-proyecto-nodejs">2. Inicializar el proyecto Node.js</h2>
+<pre class="hljs"><code><div>npm init -y
+</div></code></pre>
+<h2 id="3-instalar-las-dependencias-necesarias">3. Instalar las dependencias necesarias</h2>
+<pre class="hljs"><code><div>npm install express mysql2 sequelize body-parser --save
+</div></code></pre>
+<h2 id="4-instalar-nodemon-como-dependencia-de-desarrollo-opcional">4. Instalar <code>nodemon</code> como dependencia de desarrollo (opcional)</h2>
+<p>Para un desarrollo más rápido, se recomienda instalar <code>nodemon</code>:</p>
+<pre class="hljs"><code><div>npm install --save-dev nodemon
+</div></code></pre>
+<h2 id="5-actualizar-el-archivo-packagejson">5. Actualizar el archivo <code>package.json</code></h2>
+<p>Editar el archivo <code>package.json</code> y actualizar los scripts de la siguiente manera:</p>
+<pre class="hljs"><code><div><span class="hljs-string">"scripts"</span>: {
+  <span class="hljs-attr">"start"</span>: <span class="hljs-string">"node app.js"</span>,
+  <span class="hljs-attr">"dev"</span>: <span class="hljs-string">"nodemon app.js"</span>
+}
+</div></code></pre>
+<h2 id="6-configuraci%C3%B3n-de-la-base-de-datos">6. Configuración de la base de datos</h2>
+<p>Crear un archivo <code>config/db.js</code> para configurar la conexión a MySQL:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> { Sequelize } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);
+
+<span class="hljs-keyword">const</span> sequelize = <span class="hljs-keyword">new</span> Sequelize(<span class="hljs-string">'movil'</span>, <span class="hljs-string">'root'</span>, <span class="hljs-string">'password'</span>, {
+  <span class="hljs-attr">host</span>: <span class="hljs-string">'localhost'</span>,
+  <span class="hljs-attr">dialect</span>: <span class="hljs-string">'mysql'</span>
+});
+
+<span class="hljs-built_in">module</span>.exports = sequelize;
+</div></code></pre>
+<h2 id="7-creaci%C3%B3n-de-los-modelos-de-base-de-datos">7. Creación de los Modelos de Base de Datos</h2>
+<h3 id="modelo-persona">Modelo <code>persona</code></h3>
+<p>Crear el modelo <code>persona</code> antes que <code>usuario</code>.</p>
+<p>Crear un archivo <code>models/persona.js</code> con el siguiente contenido:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> { DataTypes } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);
+<span class="hljs-keyword">const</span> sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../config/db'</span>);
+
+<span class="hljs-keyword">const</span> persona = sequelize.define(<span class="hljs-string">'persona'</span>, {
+  <span class="hljs-attr">id</span>: {
+    <span class="hljs-attr">type</span>: DataTypes.INTEGER,
+    <span class="hljs-attr">autoIncrement</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">primaryKey</span>: <span class="hljs-literal">true</span>
+  },
+  <span class="hljs-attr">nombre</span>: {
+    <span class="hljs-attr">type</span>: DataTypes.STRING,
+    <span class="hljs-attr">allowNull</span>: <span class="hljs-literal">false</span>
+  },
+  <span class="hljs-attr">apellido</span>: {
+    <span class="hljs-attr">type</span>: DataTypes.STRING,
+    <span class="hljs-attr">allowNull</span>: <span class="hljs-literal">false</span>
+  }
+}, {
+  <span class="hljs-attr">tableName</span>: <span class="hljs-string">'persona'</span>
+});
+
+<span class="hljs-built_in">module</span>.exports = persona;
+</div></code></pre>
+<h3 id="modelo-usuario">Modelo <code>usuario</code></h3>
+<p>Crear un archivo <code>models/usuario.js</code> con el siguiente contenido:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> { DataTypes } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);
+<span class="hljs-keyword">const</span> sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../config/db'</span>);
+<span class="hljs-keyword">const</span> Persona = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./persona'</span>);  <span class="hljs-comment">// Relación con el modelo Persona</span>
+
+<span class="hljs-keyword">const</span> usuario = sequelize.define(<span class="hljs-string">'usuario'</span>, {
+  <span class="hljs-attr">id</span>: {
+    <span class="hljs-attr">type</span>: DataTypes.INTEGER,
+    <span class="hljs-attr">autoIncrement</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">primaryKey</span>: <span class="hljs-literal">true</span>
+  },
+  <span class="hljs-attr">usuario</span>: {
+    <span class="hljs-attr">type</span>: DataTypes.STRING,
+    <span class="hljs-attr">allowNull</span>: <span class="hljs-literal">false</span>
+  },
+  <span class="hljs-attr">contrasenia</span>: {
+    <span class="hljs-attr">type</span>: DataTypes.STRING,
+    <span class="hljs-attr">allowNull</span>: <span class="hljs-literal">false</span>
+  },
+  <span class="hljs-attr">persona_id</span>: {
+    <span class="hljs-attr">type</span>: DataTypes.INTEGER,
+    <span class="hljs-attr">references</span>: {
+      <span class="hljs-attr">model</span>: Persona,
+      <span class="hljs-attr">key</span>: <span class="hljs-string">'id'</span>
+    }
+  }
+}, {
+  <span class="hljs-attr">tableName</span>: <span class="hljs-string">'usuario'</span>
+});
+
+<span class="hljs-built_in">module</span>.exports = usuario;
+</div></code></pre>
+
+</body>
+</html>
