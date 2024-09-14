@@ -7,16 +7,16 @@ CREATE TABLE persona (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     celular VARCHAR(20),
     correo VARCHAR(50),
-    direccion VARCHAR(50),
+    direccion VARCHAR(100),
     edad INT,
     estado BIT(1),
-    nombre VARCHAR(50)
+    nombre VARCHAR(100)
 );
 
 -- Crear tabla usuario
 CREATE TABLE usuario (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    contrasenia VARCHAR(50),
+    contrasenia VARCHAR(100),
     usuario VARCHAR(50),
     persona_id BIGINT,
     FOREIGN KEY (persona_id) REFERENCES persona(id)
@@ -34,13 +34,13 @@ CREATE TABLE autor(
 CREATE TABLE libro(
 	id BIGINT PRIMARY KEY AUTO_INCREMENT,
 	codigo INT NOT NULL UNIQUE,
-	nombre VARCHAR(50) NOT NULL
+	nombre VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE ejemplar (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,  
   codigo INT,
-  localizacion VARCHAR(15),
+  localizacion VARCHAR(255),
   libro_id BIGINT,
   FOREIGN KEY (libro_id) REFERENCES libro(id) 
 );

@@ -1,0 +1,43 @@
+# Paso 2: Construir la imagen de Docker
+docker build -t jenkins .
+
+# Paso 3: Cambiar permisos en el volumen (opcional)
+docker run --rm -v jenkins_home:/var/jenkins_home alpine chown -R 1000:1000 /var/jenkins_home
+
+# Paso 4: Ejecutar el contenedor de Jenkins
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins --privileged -v jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins
+
+# Paso 5: Obtener el ID del contenedor de Jenkins
+docker ps
+
+# Paso 5: Acceder al contenedor como root
+docker exec -it --user root jenkins bash
+
+# Paso 6: Obtener la clave de administrador
+cat /var/jenkins_home/secrets/initialAdminPassword
+
+Clave: `380a8895f54243449dd9046b4d8dbdbe`
+
+
+
+#En caso de requeir cambiarlo manualmente el acceso a sudo para jenkins
+
+# Reiniciar el contenedor
+docker ps
+docker restart jenkins
+
+# Acceder al contenedor como root y editar sudoers manualmente
+docker exec -it --user root jenkins bash
+nano /etc/sudoers
+
+# Dentro de nano, agregar al final del archivo:
+jenkins ALL=(ALL) NOPASSWD: ALL
+
+# Guardar y salir de nano:
+# Presionar Ctrl + X
+# Presionar Y para confirmar que deseas guardar los cambios
+# Presionar Enter para confirmar el nombre del archivo
+
+# Reiniciar el contenedor
+docker ps
+docker restart jenkins

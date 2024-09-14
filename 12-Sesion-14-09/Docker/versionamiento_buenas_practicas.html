@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>versionamiento_buenas_practicas.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="buenas-pr%C3%A1cticas-para-definir-versionamientos">Buenas Prácticas para Definir Versionamientos</h1>
+<h2 id="pregunta">Pregunta:</h2>
+<p>Explique cuáles son las buenas prácticas para definir los versionamientos de una aplicación, incluyendo letras, números y palabras reservadas.</p>
+<h2 id="respuesta">Respuesta:</h2>
+<h3 id="1-usar-versionado-sem%C3%A1ntico-semver">1. Usar Versionado Semántico (SemVer)</h3>
+<p>El <strong>Versionado Semántico</strong> es una de las prácticas más comunes y recomendadas para versionar software. Su formato general es:</p>
+<pre class="hljs"><code><div>MAJOR.MINOR.PATCH
+</div></code></pre>
+<ul>
+<li><strong>MAJOR</strong> (Cambios grandes): Incrementa cuando realizas cambios incompatibles con versiones incompatibles con versiones anteriores o introduces nuevas características que rompen la compatibilidad.</li>
+<li><strong>MINOR</strong> (Nuevas funcionalidades): Incrementa cuando añades nuevas características de manera compatible con versiones anteriores.</li>
+<li><strong>PATCH</strong> (Corrección de errores): Incrementa cuando haces correcciones menores y arreglos de bugs que no afectan la compatibilidad.</li>
+</ul>
+<p>Ejemplo:</p>
+<ul>
+<li><code>2.0.0</code>: Cambios incompatibles con la versión anterior (por ejemplo, nueva arquitectura de la API).</li>
+<li><code>2.1.0</code>: Nuevas funcionalidades, pero es compatible con <code>2.0.0</code>.</li>
+<li><code>2.1.1</code>: Corrección de un bug en la versión <code>2.1.0</code>.</li>
+</ul>
+<h3 id="2-uso-de-etiquetas-adicionales">2. Uso de etiquetas adicionales</h3>
+<p>En versiones preliminares (antes del lanzamiento oficial) o para lanzar versiones especiales, puedes usar etiquetas adicionales con letras o palabras clave. Esto es útil para identificar el estado de desarrollo de la versión.</p>
+<p><strong>Formato:</strong></p>
+<pre class="hljs"><code><div>MAJOR.MINOR.PATCH-prerelease+buildmetadata
+</div></code></pre>
+<ul>
+<li>
+<p><strong>Prerelease</strong>: Se añade para indicar que es una versión inestable o en pruebas. Algunos ejemplos incluyen:</p>
+<ul>
+<li><code>alpha</code>: Versión temprana, aún inestable.</li>
+<li><code>beta</code>: Versión más estable que alpha, pero todavía en pruebas.</li>
+<li><code>rc</code> (Release Candidate): Una versión que puede ser liberada como final, a menos que se encuentren problemas graves.</li>
+</ul>
+<p>Ejemplo:</p>
+<ul>
+<li><code>2.1.0-alpha.1</code>: Primera versión alpha de la versión <code>2.1.0</code>.</li>
+<li><code>2.1.0-beta.1</code>: Primera versión beta de <code>2.1.0</code>.</li>
+<li><code>2.1.0-rc.1</code>: Primera release candidate de <code>2.1.0</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Build Metadata</strong>: Información adicional para identificar un build específico (no afecta la precedencia). Suele usarse para identificar builds internos o compilaciones automáticas en un entorno de CI/CD.</p>
+<p>Ejemplo:</p>
+<ul>
+<li><code>2.1.0-alpha.1+build123</code>: Versión alpha del build <code>123</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-evitar-usar-fechas-como-versionado-principal">3. Evitar usar fechas como versionado principal</h3>
+<p>Aunque usar fechas puede parecer conveniente, no es ideal como método de versionamiento primario. Las fechas no informan al usuario sobre la compatibilidad de la versión o los cambios realizados, lo cual es crucial en el desarrollo de software.</p>
+<p>Sin embargo, puedes usar fechas como <strong>metadata</strong> o en el nombre del release para una referencia adicional.</p>
+<p><strong>Ejemplo de uso incorrecto como versión principal:</strong></p>
+<pre class="hljs"><code><div>2023.09.14
+</div></code></pre>
+<p><strong>Uso recomendado como metadata o junto a versionado semántico:</strong></p>
+<pre class="hljs"><code><div>2.1.0+20230914
+</div></code></pre>
+<h3 id="4-palabras-clave-para-versiones-especiales">4. Palabras clave para versiones especiales</h3>
+<p>Existen convenciones bien aceptadas para etiquetar versiones especiales, pero es importante no abusar de ellas. Algunas palabras clave útiles incluyen:</p>
+<ul>
+<li>
+<p><strong>LTS (Long-Term Support)</strong>: Usado para indicar que una versión recibirá soporte a largo plazo. Esta etiqueta se utiliza cuando una versión específica será mantenida por un período extenso.</p>
+<ul>
+<li>Ejemplo: <code>2.1.0-lts</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Legacy</strong>: Usado para indicar una versión antigua o que ya no recibe actualizaciones nuevas, pero que sigue disponible por compatibilidad.</p>
+<ul>
+<li>Ejemplo: <code>1.9.5-legacy</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Stable</strong>: Aunque rara vez se usa explícitamente, podría aparecer para destacar que una versión es estable y lista para producción.</p>
+<ul>
+<li>Ejemplo: <code>2.1.0-stable</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="5-mantener-un-ciclo-de-vida-de-versiones-claro">5. Mantener un ciclo de vida de versiones claro</h3>
+<p>Es importante definir y comunicar cómo gestionas las versiones en tu aplicación. Esto incluye cuándo una versión será considerada <strong>obsoleta</strong> (deprecated), cuándo dejarás de darle soporte, y cómo los usuarios deberían migrar a una nueva versión.</p>
+<p><strong>Buenas prácticas:</strong></p>
+<ul>
+<li><strong>Obsolescencia</strong>: Anuncia con tiempo cuándo una versión será descontinuada o reemplazada por una nueva versión.</li>
+<li><strong>Documentación clara</strong>: Proporciona documentación para que los usuarios sepan cómo migrar a la nueva versión y los cambios clave.</li>
+</ul>
+<p><strong>Ejemplo de ciclo de vida:</strong></p>
+<ul>
+<li><code>1.0.0</code>: Versión inicial.</li>
+<li><code>1.1.0</code>: Se anuncian mejoras y nuevas funcionalidades.</li>
+<li><code>1.2.0</code>: Se agrega funcionalidad y se avisa de la obsolescencia de la versión <code>1.0.0</code>.</li>
+<li><code>2.0.0</code>: Nueva versión con cambios que rompen compatibilidad. La versión <code>1.0.0</code> deja de recibir soporte en 6 meses.</li>
+</ul>
+<h3 id="6-versionar-la-api">6. Versionar la API</h3>
+<p>Cuando versionas una API, es una buena práctica incluir el número de versión en la URL del endpoint o en los encabezados de la solicitud.</p>
+<h4 id="versionamiento-en-la-url">Versionamiento en la URL:</h4>
+<pre class="hljs"><code><div>https://api.tuapp.com/v1/libros
+https://api.tuapp.com/v2/libros
+</div></code></pre>
+<p>En este caso, <code>v1</code> o <code>v2</code> indica la versión de la API.</p>
+<h4 id="versionamiento-en-encabezados">Versionamiento en encabezados:</h4>
+<p>Puedes definir la versión de la API en los encabezados de la solicitud HTTP, lo cual hace la URL más limpia:</p>
+<pre class="hljs"><code><div>GET /libros
+Headers: 
+  Accept: application/vnd.tuapp.v1+json
+</div></code></pre>
+<h3 id="7-evitar-uso-de-letras-o-palabras-ambiguas-en-las-versiones">7. Evitar uso de letras o palabras ambiguas en las versiones</h3>
+<p>Es una buena práctica evitar usar letras o palabras que puedan causar confusión. En lugar de etiquetas ambiguas, utiliza etiquetas bien conocidas, como <code>alpha</code>, <code>beta</code>, <code>rc</code>, o <code>legacy</code>. Esto facilita que cualquier desarrollador entienda el propósito de la versión.</p>
+<h3 id="8-evitar-saltos-grandes-en-la-numeraci%C3%B3n">8. Evitar saltos grandes en la numeración</h3>
+<p>Los saltos innecesarios en los números de versión pueden confundir a los usuarios. Si la versión actual es <code>2.1.0</code>, evita saltar directamente a <code>4.0.0</code> sin una justificación clara (como un cambio radical en la funcionalidad o arquitectura).</p>
+<h3 id="ejemplo-completo-de-versionamiento-sem%C3%A1ntico">Ejemplo completo de versionamiento semántico:</h3>
+<ol>
+<li>
+<p><strong>Primera versión pública estable</strong>:</p>
+<ul>
+<li><code>1.0.0</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Primera actualización menor con nuevas características</strong>:</p>
+<ul>
+<li><code>1.1.0</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Corrección de errores en la versión <code>1.1.0</code></strong>:</p>
+<ul>
+<li><code>1.1.1</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Versiones inestables para pruebas de la versión <code>2.0.0</code></strong>:</p>
+<ul>
+<li><code>2.0.0-alpha.1</code></li>
+<li><code>2.0.0-beta.1</code></li>
+<li><code>2.0.0-rc.1</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Versión final compatible pero con grandes cambios</strong>:</p>
+<ul>
+<li><code>2.0.0</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Actualización de seguridad para la versión <code>2.0.0</code></strong>:</p>
+<ul>
+<li><code>2.0.1</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="resumen-de-buenas-pr%C3%A1cticas">Resumen de buenas prácticas:</h2>
+<ol>
+<li><strong>Usa versionado semántico</strong> (MAJOR.MINOR.PATCH).</li>
+<li><strong>Usa etiquetas adicionales</strong> como <code>alpha</code>, <code>beta</code>, <code>rc</code>, y metadata para builds.</li>
+<li><strong>Evita usar fechas como versión principal</strong>, pero se pueden usar como metadata.</li>
+<li><strong>Utiliza palabras clave estándar</strong> para versiones especiales, como <code>lts</code>, <code>legacy</code>.</li>
+<li><strong>Define un ciclo de vida claro</strong> para tus versiones, incluyendo cuándo serán obsoletas.</li>
+<li><strong>Versiona tu API correctamente</strong>, ya sea en la URL o en los encabezados.</li>
+<li><strong>Evita saltos innecesarios en la numeración</strong> y mantén consistencia.</li>
+</ol>
+<p>Estas prácticas te ayudarán a gestionar el versionamiento de tu aplicación de manera clara, escalable y fácil de entender para los usuarios y desarrolladores.</p>
+
+</body>
+</html>

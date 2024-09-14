@@ -1,0 +1,32 @@
+services:
+  sqlserver:
+    container_name: serve-sqlserver
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      SA_PASSWORD: ${SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - network_local_server
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      - "/home/ubuntu/db_backups:/backups/sqlserver"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -U sa -P ${SA_PASSWORD} -Q 'SELECT 1'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    labels:
+      - com.corhuila.group=databases
+
+networks:
+  network_local_server:
+    external: true
+
+volumes:
+  sqlserver_data:
+    driver: local

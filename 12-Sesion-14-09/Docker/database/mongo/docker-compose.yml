@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  mongodb:
+    container_name: serve-mongodb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "27017:27017"
+    networks:
+      - network_local_server
+    volumes:
+      - mongodb_data:/data/db
+      - "/home/ubuntu/db_backups:/backups/mongodb"
+    healthcheck:
+      test: ["CMD-SHELL", "mongo --eval 'db.runCommand({ ping: 1 })'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    labels:
+      - com.corhuila.group=databases
+
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  network_local_server:
+    external: true
