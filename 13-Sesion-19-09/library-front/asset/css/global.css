@@ -1,0 +1,18 @@
+body {
+    background-color: #f0f0f0; /* Color gris claro para el cuerpo */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: white; /* Fondo blanco para el contenido */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+/* Añadir un espacio blanco alrededor del contenido */
+.content-wrapper {
+    margin: 20px auto;
+    max-width: 1200px; /* Ancho máximo del contenido */
+}
